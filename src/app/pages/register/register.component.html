@@ -1,0 +1,33 @@
+<main class="form-signin">
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+        <img class="mb-4" src="https://cdn-02.bilbayt.com/assets/bilbayt--logo-only--white-transparent-636626733138545439.svg" alt="" width="72" height="57" style="background-color: #0a58ca;">
+        <h1 class="h3 mb-3 fw-normal">New User Registration</h1>
+    
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Full Name" formControlName="fullname" required>
+            <label for="floatingPassword">Full Name</label>
+            <span class="text-danger" *ngIf="f.fullname.touched && f.fullname.errors">Full name is required</span>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Username" formControlName="username" required>
+            <label for="floatingPassword">User Name</label>
+            <span class="text-danger" *ngIf="f.username.touched && f.username.errors?.required">username is required</span>
+            <span class="text-danger" *ngIf="f.username.errors?.email">username must be a valid email</span>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" required>
+            <label for="floatingPassword">Password</label>
+            <span class="text-danger" *ngIf="f.password.touched && f.password.errors?.required">Password is required</span>
+        </div>
+    
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid">Register
+            <span *ngIf="loading"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+        </button>
+        <label>Already have an account?<a routerLink="/login" class="dt-side-nav__link" title="Classic">Sign in</a></label>
+        <p class="mt-5 mb-3 text-muted">© Bilbayt 2021</p>
+    </form>
+</main>

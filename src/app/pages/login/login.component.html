@@ -1,0 +1,24 @@
+<div class="form-signin">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+    <img class="mb-4" src="https://cdn-02.bilbayt.com/assets/bilbayt--logo-only--white-transparent-636626733138545439.svg" alt="" width="72" height="57" style="background-color: #0a58ca;">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating has-validation">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="username">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loginForm.invalid">Sign in 
+      <span *ngIf="loading"
+      class="spinner-border spinner-border-sm"
+      role="status"
+      aria-hidden="true"></span>
+    </button>
+    <label>Don't have an account?<a routerLink="/register" class="dt-side-nav__link" title="Classic">Register</a></label>
+    <p class="mt-5 mb-3 text-muted">© Bilbayt 2021</p>
+  </form>
+</div>
